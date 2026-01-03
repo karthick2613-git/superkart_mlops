@@ -8,7 +8,7 @@ from sklearn.compose import make_column_transformer
 from sklearn.pipeline import make_pipeline
 
 from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import r2_score, mean_squared_error
+from sklearn.metrics import r2_score, root_mean_squared_error
 
 import xgboost as xgb
 import joblib
@@ -107,8 +107,8 @@ y_test_pred  = best_model.predict(Xtest)
 train_r2 = r2_score(ytrain, y_train_pred)
 test_r2  = r2_score(ytest, y_test_pred)
 
-train_rmse = mean_squared_error(ytrain, y_train_pred, squared=False)
-test_rmse  = mean_squared_error(ytest, y_test_pred, squared=False)
+train_rmse = root_mean_squared_error(ytrain, y_train_pred)
+test_rmse  = root_mean_squared_error(ytest, y_test_pred)
 
 print("\nTrain R²:", train_r2)
 print("Test R²:", test_r2)
